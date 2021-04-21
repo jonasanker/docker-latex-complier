@@ -46,10 +46,10 @@ WORKDIR /script
 # Build latex file
 # Duplicated to avoid bug with citations not working
 # See https://stackoverflow.com/questions/61096400/latex-miktex-undefined-citations
-RUN echo "pdflatex -synctex=1 -interaction=nonstopmode --enable-write18 --jobname=thesis main \
-    && bibtex thesis.aux \
-    && pdflatex -synctex=1 -interaction=nonstopmode --enable-write18 --jobname=thesis main \
-    && pdflatex -synctex=1 -interaction=nonstopmode --enable-write18 --jobname=thesis main" >> compile-latex.sh
+RUN echo "pdflatex -synctex=1 -interaction=nonstopmode --enable-write18 main \
+    && bibtex main.aux \
+    && pdflatex -synctex=1 -interaction=nonstopmode --enable-write18 main \
+    && pdflatex -synctex=1 -interaction=nonstopmode --enable-write18  main" >> compile-latex.sh
 RUN chmod +x compile-latex.sh
 
 WORKDIR /output
